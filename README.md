@@ -6,8 +6,8 @@ The second part is adapted from [this post on the TenForums](https://www.tenforu
 
 ## What you need
 * A PC with a clean installation of windows, with no user set up yet (asking which region you're in).
-* A [standard Windows Installation Boot USB stick](https://www.microsoft.com/en-us/software-download/windows10) with a copy of all the files from here in a subfolder on it, plugged into the PC.
-* An additional copy of the `winre.wim` file found in the default installation or got through [this method](https://docs.microsoft.com/de-de/windows-hardware/manufacture/desktop/deploy-windows-re?view=windows-10) in the ScriptFiles folder.
+* A [standard bootable Windows installation USB stick](https://www.microsoft.com/en-us/software-download/windows10) with a copy of all the files from here in a subfolder on it, plugged into the PC.
+* An additional copy of the `winre.wim` file found in the default installation or got through [this method](https://docs.microsoft.com/de-de/windows-hardware/manufacture/desktop/deploy-windows-re?view=windows-10) in the `ScriptFiles` folder.
 
 ## Creation of custom install files
 1. In the region choice screen, press `Ctrl+Shift+F3`.<br>
@@ -15,7 +15,7 @@ The second part is adapted from [this post on the TenForums](https://www.tenforu
 2. Close the *System Preparation Tool* window.
 3. Configure windows settings according to your needs and wants.
 4. [Uninstall and disable unwanted UWPs (Windows 10 default Apps)](https://james-rankin.com/articles/how-to-remove-uwp-apps-on-windows-10-v1803/) [(Archived Version)](https://web.archive.org/web/20211209142423/https://james-rankin.com/articles/how-to-remove-uwp-apps-on-windows-10-v1803/)
-	1. Open PowerShell as Administrator (Ctrl+Shift).
+	1. Open PowerShell as Administrator (`Ctrl+Shift`).
 	2. Run `Get-AppxProvisionedPackage -online | Out-GridView -PassThru | Remove-AppxProvisionedPackage -online`.
 	3. Select all Apps you don't want (Ctrl+Click) and click ok. Wait for it running.
 	4. Run `Get-AppxPackage -AllUsers | Out-GridView -PassThru | Remove-AppxPackage`.
@@ -23,29 +23,31 @@ The second part is adapted from [this post on the TenForums](https://www.tenforu
 	6. Go the normal program list and uninstall any additional unwanted programs (e.g. OneDrive).
 5. Install programs to provide by default (e.g. Firefox, MS Office, ...).
 6. Configure these programs' settings (e.g. config and install Addons in Firefox) and make them default for their filetypes if wanted.
-	* If a program your using saves it's settings in AppData, add the corresponding folder/file in the `EmptyDefault.bat` from `ScriptFiles`.
+	* If a program you're using saves it's settings in `AppData`, add the corresponding folder/file in the `EmptyDefault.bat` from `ScriptFiles`.
 7. Run `0.1_CreateDefaultAssociations.bat`.
-8. Run `0.2_CreateDefaultStartMenuLayout.ps1`. (If that doesn't work run `Export-StartLayout -Path C:\LayoutModification.xml` in an elevated PowerShell).
-9. Open `C:\defaultassociations.xml` and edit it according to the wanted default file associations. (An example is provided in `ScriptFiles`.)
-10. Open `C:\LayoutModification.xml` and [add the Taskbar Layout as needed](https://docs.microsoft.com/en-us/windows/configuration/configure-windows-10-taskbar#sample-taskbar-configuration-added-to-start-layout-xml-file). (An example is provided in `ScriptFiles`.)
-11. Cut & paste your modified XMLs from 8. & 9. into the `ScriptFiles` folder, replacing my default ones.
-12. Run `1_Preparations.bat` elevated.
-13. Run the partition manager.
-14. Shrink your main partition by 15-25 GB.
-15. Create a new partition with this space called `Install`.
-16. Run `2_Sysprep.bat` elevated and wait for the system to shut down.
-17. Start your system from the USB stick.
-18. In the installation screen, press `Shift+F10` to open the command prompt.
-19. Use `E:` (probably) to change to your stick and `cd` to the directory the batch files are located in.
-20. Run `3_CreateImage.bat` (from the command line). This will take a while (> 20 min probably, so go make yourself a coffee or whatever).
-21. Close command line and installation window and reboot your system normally.
-22. Got through the first user creation process until you reach the desktop.
-23. Open the USB stick and run `4_SplitImage.bat`. This will again take a short while (> 5 min probably).
-24. Open the `sources` folder on your USB stick and delete `install.wim` from it.
-25. Open the *Install* partition in file explorer.
-26. Copy all `.swm` files (not the `.wim` file) into the sources dir of your stick.
-27. Use the partition manager to delete the Install partition and reclaim it's space for your main partition.
-28. You now have a stick with an installer for a customized Windows.
+8. Run `0.2_CreateDefaultStartMenuLayout.ps1`.
+	* If that doesn't work, run `Export-StartLayout -Path C:\LayoutModification.xml` in an elevated PowerShell.
+10. Open `C:\defaultassociations.xml` and edit it according to the wanted default file associations. (An example is provided in `ScriptFiles`.)
+11. Open `C:\LayoutModification.xml` and [add the Taskbar Layout as needed](https://docs.microsoft.com/en-us/windows/configuration/configure-windows-10-taskbar#sample-taskbar-configuration-added-to-start-layout-xml-file).
+	* An example is provided in `ScriptFiles`.
+13. Cut & paste your modified XMLs from 8. & 9. into the `ScriptFiles` folder, replacing my default ones.
+14. Run `1_Preparations.bat` elevated.
+15. Run the partition manager.
+16. Shrink your main partition by 15-25 GB.
+17. Create a new partition with this space called `Install`.
+18. Run `2_Sysprep.bat` elevated and wait for the system to shut down.
+19. Start your system from the USB stick.
+20. In the installation screen, press `Shift+F10` to open the command prompt.
+21. Use `E:` (probably) to change to your stick and `cd` to the directory the batch files are located in.
+22. Run `3_CreateImage.bat` (from the command line). This will take a while (> 20 min probably, so go make yourself a coffee or whatever).
+23. Close command line and installation window and reboot your system normally.
+24. Got through the first user creation process until you reach the desktop.
+25. Open the USB stick and run `4_SplitImage.bat`. This will again take a short while (> 5 min probably).
+26. Open the `sources` folder on your USB stick and delete `install.wim` from it.
+27. Open the *Install* partition in file explorer.
+28. Copy all `.swm` files (not the `.wim` file) into the sources dir of your stick.
+29. Use the partition manager to delete the Install partition and reclaim it's space for your main partition.
+30. You now have a stick with an installer for a customized Windows.
 
 ## Creation of custom ISO image
 (You can skip this if you are happy with the USB stick.)<br>
@@ -54,7 +56,7 @@ The second part is adapted from [this post on the TenForums](https://www.tenforu
 3. Open the (newly installed) *Deployment and Imaging Tools* elevated.
 4. Run command `cd\`.
 5. Run `oscdimg.exe -m -o -u2 -udfver102 -bootdata:2#p0,e,bE:\boot\etfsboot.com#pEF,e,bE:\efi\microsoft\boot\efisys.bin E: C:\CustomWin10.iso`.<br>
-	Replace `E:` with the drive letter of your USB stick and `C:\CustomWin10.iso` with the path and name of your ISO file you want.<br>
+	Replace `E:` with the drive letter of your USB stick and `C:\CustomWin10.iso` with the path and name of the ISO file you want.<br>
 	This will again take a short while.
 6. The image was created at the specified path. Renaming the file is possible without any special care.
 
