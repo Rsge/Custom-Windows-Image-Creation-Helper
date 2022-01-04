@@ -66,7 +66,7 @@ Because of the split image and the nature of custom installations, a few things 
 2. Boot from the USB stick.
 3. In the installation screen, press `Shift+F10` to open the command prompt.
 4. Use `D:` (probably now) to change to your USB stick and `cd` to the directory the batch files are located in.
-5. Run `A_StartInstallation.bat`. This will take a while (> 15 min probably, got get a refreshment if you like).
+5. Run `A_StartInstallation.bat`. This will take a while (> 15 min probably, go get a second refreshment if you like).
 6. Close command line and installation window and reboot your system normally.
 7. Got through the first user creation process until you reach the desktop.
 8. **Important!** Run `B_FixDefault.bat` elevated.<br>
