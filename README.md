@@ -28,7 +28,7 @@ The second part is adapted from [this post on the TenForums](https://www.tenforu
 8. Run `0.2_CreateDefaultStartMenuLayout.ps1`.
 	* If that doesn't work, run `Export-StartLayout -Path C:\LayoutModification.xml` in an elevated PowerShell.
 10. Open `C:\defaultassociations.xml` and edit it according to the wanted default file associations. (An example is provided in `ScriptFiles`.)
-11. Open `C:\LayoutModification.xml` and [add the Taskbar Layout as needed](https://docs.microsoft.com/en-us/windows/configuration/configure-windows-10-taskbar#sample-taskbar-configuration-added-to-start-layout-xml-file).
+11. Open `C:\LayoutModification.xml` and [add the Taskbar Layout as needed](https://docs.microsoft.com/en-us/windows/configuration/configure-windows-10-taskbar#sample-taskbar-configuration-added-to-start-layout-xml-file) [(Archived Version)](https://web.archive.org/web/20220121115213/https://docs.microsoft.com/en-us/windows/configuration//configure-windows-10-taskbar#sample-taskbar-configuration-added-to-start-layout-xml-file).
 	* An example is provided in `ScriptFiles`.
 13. Cut & paste your modified XMLs from 8. & 9. into the `ScriptFiles` folder, replacing my default ones.
 14. Run `1_Preparations.bat` elevated.
@@ -41,7 +41,7 @@ The second part is adapted from [this post on the TenForums](https://www.tenforu
 21. Use `E:` (probably) to change to your stick and `cd` to the directory the batch files are located in.
 22. Run `3_CreateImage.bat` (from the command line). This will take a while (> 20 min probably, so go make yourself a coffee or whatever).
 23. Close command line and installation window and reboot your system normally.
-24. Got through the first user creation process until you reach the desktop.
+24. Go through the first user creation process until you reach the desktop.
 25. Open the USB stick and run `4_SplitImage.bat`. This will again take a short while (> 5 min probably).
 26. Open the `sources` folder on your USB stick and delete `install.wim` from it.
 27. Open the *Install* partition in file explorer.
@@ -51,14 +51,16 @@ The second part is adapted from [this post on the TenForums](https://www.tenforu
 
 ## Creation of custom ISO image
 (You can skip this if you are happy with the USB stick.)<br>
-1. Download the [*Windows Assessment and Deployment Kit (ADK)*](https://developer.microsoft.com/en-us/windows/hardware/windows-assessment-deployment-kit).
-2. Install only the *Deployment Tools*. (You don't need anything else.)
-3. Open the (newly installed) *Deployment and Imaging Tools* elevated.
-4. Run command `cd\`.
-5. Run `oscdimg.exe -m -o -u2 -udfver102 -bootdata:2#p0,e,bE:\boot\etfsboot.com#pEF,e,bE:\efi\microsoft\boot\efisys.bin E: C:\CustomWin10.iso`.<br>
+1. Temporarily move the folder containing the scripts from your USB stick to somewhere else (e.g. the Desktop).
+2. Download the [*Windows Assessment and Deployment Kit (ADK)*](https://developer.microsoft.com/en-us/windows/hardware/windows-assessment-deployment-kit).
+3. Install only the *Deployment Tools*. (You don't need anything else.)
+4. Open the (newly installed) *Deployment and Imaging Tools* elevated.
+5. Run command `cd\`.
+6. Run `oscdimg.exe -m -o -u2 -udfver102 -bootdata:2#p0,e,bE:\boot\etfsboot.com#pEF,e,bE:\efi\microsoft\boot\efisys.bin E: C:\CustomWin10.iso`.<br>
 	Replace `E:` with the drive letter of your USB stick and `C:\CustomWin10.iso` with the path and name of the ISO file you want.<br>
 	This will again take a short while.
-6. The image was created at the specified path. Renaming the file is possible without any special care.
+7. The image was created at the specified path. Renaming the file is possible without any special care.
+8. Move the folder with scripts back onto your USB stick.
 
 ## Installation with custom install files
 Because of the split image and the nature of custom installations, a few things are different from a normal installation.
