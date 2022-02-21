@@ -73,4 +73,4 @@ Because of the split image and the nature of custom installations, a few things 
 7. Got through the first user creation process until you reach the desktop.
 8. **Important!** Run `B_FixDefault.bat` elevated.<br>
 	**If you don't do this step, new logins will take ages and won't work correctly the first few times.**<br>
-	If you forget this step, you can run `X_EmergencyFixDefault` elevated on any user to fix it for future users.
+	If you forget this step, you can run `X_EmergencyFixDefault.bat` elevated on any user to fix it for future users.
