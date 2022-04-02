@@ -1,1 +1,1 @@
-dism /Online /Export-DefaultAppAssociations:c:\defaultassociations.xml
+dism /Online /Export-DefaultAppAssociations:C:\DefaultAssociations.xml
