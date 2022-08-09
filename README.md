@@ -1,8 +1,8 @@
 # Custom-Windows-Image-Creation-Helper
-Tutorial and scripts to help with the preparation and creation of and installation with a custom Windows 10 image.
+Tutorial and scripts to help with the preparation and creation of and installation using a custom Windows 10 image.
 
-Much of the first part is adapted from [this blogpost by James Rankin](https://james-rankin.com/articles/creating-a-custom-default-profile-on-windows-10-v1803/) [(Archived Version)](https://web.archive.org/web/20210525055756/https://james-rankin.com/articles/creating-a-custom-default-profile-on-windows-10-v1803/).<br>
-The second part is adapted from [this post on the TenForums](https://www.tenforums.com/tutorials/72031-create-windows-10-iso-image-existing-installation.html#Part5) [(Archived Version)](https://web.archive.org/web/20211201160745/https://www.tenforums.com/tutorials/72031-create-windows-10-iso-image-existing-installation.html#Part5) from point 5.3) onwards.
+Much of the first part is adapted from [this blogpost by James Rankin](https://james-rankin.com/articles/creating-a-custom-default-profile-on-windows-10-v1803/) [[Archived link](https://web.archive.org/web/20210525055756/https://james-rankin.com/articles/creating-a-custom-default-profile-on-windows-10-v1803/)].<br>
+The second part is adapted from [this post on the TenForums](https://www.tenforums.com/tutorials/72031-create-windows-10-iso-image-existing-installation.html#Part5) [[Archived link](https://web.archive.org/web/20211201160745/https://www.tenforums.com/tutorials/72031-create-windows-10-iso-image-existing-installation.html#Part5)] from point 5.3) onwards.
 
 ## What you need
 * A PC with a clean installation of windows, with no user set up yet (asking which region you're in).
@@ -14,7 +14,7 @@ The second part is adapted from [this post on the TenForums](https://www.tenforu
 	The PC reboots into Audit Mode and gives you a temporary account to work with.
 2. Close the *System Preparation Tool* window.
 3. Configure windows settings according to your needs and wants.
-4. [Uninstall and disable unwanted UWPs (Windows 10 default Apps)](https://james-rankin.com/articles/how-to-remove-uwp-apps-on-windows-10-v1803/) [(Archived Version)](https://web.archive.org/web/20211209142423/https://james-rankin.com/articles/how-to-remove-uwp-apps-on-windows-10-v1803/)
+4. [Uninstall and disable unwanted UWPs (Windows 10 default Apps)](https://james-rankin.com/articles/how-to-remove-uwp-apps-on-windows-10-v1803/) [[Archived link](https://web.archive.org/web/20211209142423/https://james-rankin.com/articles/how-to-remove-uwp-apps-on-windows-10-v1803/)]
 	1. Open PowerShell as Administrator (`Ctrl+Shift`).
 	2. Run `Get-AppxProvisionedPackage -online | Out-GridView -PassThru | Remove-AppxProvisionedPackage -online`.
 	3. Select all Apps you don't want (Ctrl+Click) and click ok. Wait for it running.
@@ -28,7 +28,7 @@ The second part is adapted from [this post on the TenForums](https://www.tenforu
 8. Run `0.2_CreateDefaultStartMenuLayout.ps1`.
 	* If that doesn't work, run `Export-StartLayout -Path C:\LayoutModification.xml` in an elevated PowerShell.
 10. Open `C:\defaultassociations.xml` and edit it according to the wanted default file associations. (An example is provided in `ScriptFiles`.)
-11. Open `C:\LayoutModification.xml` and [add the Taskbar Layout as needed](https://docs.microsoft.com/en-us/windows/configuration/configure-windows-10-taskbar#sample-taskbar-configuration-added-to-start-layout-xml-file) [(Archived Version)](https://web.archive.org/web/20220121115213/https://docs.microsoft.com/en-us/windows/configuration//configure-windows-10-taskbar#sample-taskbar-configuration-added-to-start-layout-xml-file).
+11. Open `C:\LayoutModification.xml` and [add the Taskbar Layout as needed](https://docs.microsoft.com/en-us/windows/configuration/configure-windows-10-taskbar#sample-taskbar-configuration-added-to-start-layout-xml-file) [[Archived link](https://web.archive.org/web/20220121115213/https://docs.microsoft.com/en-us/windows/configuration//configure-windows-10-taskbar#sample-taskbar-configuration-added-to-start-layout-xml-file)].
 	* An example is provided in `ScriptFiles`.
 13. Cut & paste your modified XMLs from 8. & 9. into the `ScriptFiles` folder, replacing my default ones.
 14. Run `1_Preparations.bat` elevated.
