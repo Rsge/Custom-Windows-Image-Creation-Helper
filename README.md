@@ -23,26 +23,26 @@ The second part is adapted from [this post on the TenForums](https://www.tenforu
 	6. Go the normal program list and uninstall any additional unwanted programs (e.g. OneDrive).
 5. Install programs to provide by default (e.g. Firefox, MS Office, ...).
 6. Configure these programs' settings (e.g. config and install Addons in Firefox) and make them default for their filetypes if wanted.
-	* If a program you're using saves it's settings in `AppData`, add the corresponding folder/file in the `EmptyDefault.bat` from `ScriptFiles`.
-7. Run `0.1_CreateDefaultAssociations.bat`.
+	* If a program you're using saves it's settings in `AppData`, add the corresponding folder/file in the `EmptyDefault.cmd` from `ScriptFiles`.
+7. Run `0.1_CreateDefaultAssociations.cmd`.
 8. Run `0.2_CreateDefaultStartMenuLayout.ps1`.
 	* If that doesn't work, run `Export-StartLayout -Path C:\LayoutModification.xml` in an elevated PowerShell.
 10. Open `C:\defaultassociations.xml` and edit it according to the wanted default file associations. (An example is provided in `ScriptFiles`.)
 11. Open `C:\LayoutModification.xml` and [add the Taskbar Layout as needed](https://docs.microsoft.com/en-us/windows/configuration/configure-windows-10-taskbar#sample-taskbar-configuration-added-to-start-layout-xml-file) [[Archived link](https://web.archive.org/web/20220121115213/https://docs.microsoft.com/en-us/windows/configuration//configure-windows-10-taskbar#sample-taskbar-configuration-added-to-start-layout-xml-file)].
 	* An example is provided in `ScriptFiles`.
 13. Cut & paste your modified XMLs from 8. & 9. into the `ScriptFiles` folder, replacing my default ones.
-14. Run `1_Preparations.bat` elevated.
+14. Run `1_Preparations.cmd` elevated.
 15. Run the partition manager.
 16. Shrink your main partition by 15-25 GB.
 17. Create a new partition with this space called `Install`.
-18. Run `2_Sysprep.bat` elevated and wait for the system to shut down.
+18. Run `2_Sysprep.cmd` elevated and wait for the system to shut down.
 19. Start your system from the USB stick.
 20. In the installation screen, press `Shift+F10` to open the command prompt.
-21. Use `E:` (probably) to change to your stick and `cd` to the directory the batch files are located in.
-22. Run `3_CreateImage.bat` (from the command line). This will take a while (> 20 min probably, so go make yourself a coffee or whatever).
+21. Use `E:` (probably) to change to your stick and `cd` to the directory the.cmdch files are located in.
+22. Run `3_CreateImage.cmd` (from the command line). This will take a while (> 20 min probably, so go make yourself a coffee or whatever).
 23. Close command line and installation window and reboot your system normally.
 24. Go through the first user creation process until you reach the desktop.
-25. Open the USB stick and run `4_SplitImage.bat`. This will again take a short while (> 5 min probably).
+25. Open the USB stick and run `4_SplitImage.cmd`. This will again take a short while (> 5 min probably).
 26. Open the `sources` folder on your USB stick and delete `install.wim` from it.
 27. Open the *Install* partition in file explorer.
 28. Copy all `.swm` files (not the `.wim` file) into the sources dir of your stick.
@@ -67,10 +67,10 @@ Because of the split image and the nature of custom installations, a few things 
 1. Plug in your USB stick from above into a new PC.
 2. Boot from the USB stick.
 3. In the installation screen, press `Shift+F10` to open the command prompt.
-4. Use `D:` (probably now) to change to your USB stick and `cd` to the directory the batch files are located in.
-5. Run `A_StartInstallation.bat`. This will take a while (> 15 min probably, go get a second refreshment if you like).
+4. Use `D:` (probably now) to change to your USB stick and `cd` to the directory the.cmdch files are located in.
+5. Run `A_StartInstallation.cmd`. This will take a while (> 15 min probably, go get a second refreshment if you like).
 6. Close command line and installation window and reboot your system normally.
 7. Got through the first user creation process until you reach the desktop.
-8. **Important!** Run `B_FixDefault.bat` elevated.<br>
+8. **Important!** Run `B_FixDefault.cmd` elevated.<br>
 	**If you don't do this step, new logins will take ages and won't work correctly the first few times.**<br>
-	If you forget this step, you can run `X_EmergencyFixDefault.bat` elevated on any user to fix it for future users.
+	If you forget this step, you can run `X_EmergencyFixDefault.cmd` elevated on any user to fix it for future users.
