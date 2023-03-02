@@ -38,7 +38,7 @@ The second part is adapted from [this post on the TenForums](https://www.tenforu
 18. Run `2_Sysprep.cmd` elevated and wait for the system to shut down.
 19. Start your system from the USB stick.
 20. In the installation screen, press `Shift+F10` to open the command prompt.
-21. Use `E:` (probably) to change to your stick and `cd` to the directory the.cmdch files are located in.
+21. Use `E:` (probably, or `D:` if you don't have an optical drive) to change to your stick and `cd` to the directory the `.cmd` files are located in.
 22. Run `3_CreateImage.cmd` (from the command line). This will take a while (> 20 min probably, so go make yourself a coffee or whatever).
 23. Close command line and installation window and reboot your system normally.
 24. Go through the first user creation process until you reach the desktop.
@@ -67,7 +67,7 @@ Because of the split image and the nature of custom installations, a few things 
 1. Plug in your USB stick from above into a new PC.
 2. Boot from the USB stick.
 3. In the installation screen, press `Shift+F10` to open the command prompt.
-4. Use `D:` (probably now) to change to your USB stick and `cd` to the directory the.cmdch files are located in.
+4. Use `D:` (probably now) to change to your USB stick and `cd` to the directory the `.cmd` files are located in.
 5. Run `A_StartInstallation.cmd`. This will take a while (> 15 min probably, go get a second refreshment if you like).
 6. Close command line and installation window and reboot your system normally.
 7. Got through the first user creation process until you reach the desktop.
