@@ -1,5 +1,6 @@
 @echo off
 pushd %~dp0
+
 robocopy "ScriptFiles" "%localappdata%\Microsoft\Windows\Shell" "LayoutModification.xml"
 robocopy "ScriptFiles" "C:\Install" "unattend.xml"
 robocopy "ScriptFiles" "C:\ProgramData\Install" "DefaultAssociations.xml"
